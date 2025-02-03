@@ -12,10 +12,10 @@ app.use(express.urlencoded({ extended: false }));
 mongoose
   .connect(process.env.DATABASE_URL)
   .then(() => {
-    console.log("Connected to the database");
+    console.log("Connected to MongoDB");
   })
-  .catch(() => {
-    console.log("Connection failed");
+  .catch((err) => {
+    console.log("Connection failed", err);
   });
 
 app.listen(3000, () => {

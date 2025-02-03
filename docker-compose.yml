@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  mongo_db:
+    image: mongo:latest
+    container_name: mongo_db
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admindb
+      MONGO_INITDB_ROOT_PASSWORD: pepsifan1234
+
+  task_api:
+    build: .
+    container_name: task_api
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo_db
+    environment:
+      DATABASE_URL: "mongodb://admindb:pepsifan1234@mongo_db:27017/BackendDB?authSource=admin"
