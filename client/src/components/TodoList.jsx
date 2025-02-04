@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { taskService } from "../services/TaskService";
+import Task from "./Task";
 
 const TodoList = () => {
   const [tasks, setTasks] = useState([]);
@@ -9,18 +10,16 @@ const TodoList = () => {
       .getAllTasks()
       .then(setTasks)
       .catch((error) => console.error("Error fetching tasks", error));
-  }, []);
+  }, [tasks]);
 
   return (
     <div>
       <h2>My to-do list</h2>
-      <ul>
+      <div>
         {tasks.map((task) => (
-          <li key={task._id}>
-            {task.name} - {task.progress}
-          </li>
+          <Task key={task._id} task={task} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
