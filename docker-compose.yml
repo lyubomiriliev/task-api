@@ -7,6 +7,8 @@ services:
     restart: always
     ports:
       - "27017:27017"
+    volumes:
+      - mongo_data:/data/db # 👈 Persistent Volume for MongoDB
     environment:
       MONGO_INITDB_ROOT_USERNAME: admindb
       MONGO_INITDB_ROOT_PASSWORD: pepsifan1234
@@ -20,4 +22,7 @@ services:
     depends_on:
       - mongo_db
     environment:
-      DATABASE_URL: "mongodb://admindb:pepsifan1234@mongo_db:27017/BackendDB?authSource=admin"
+      MONGO_URI: "mongodb://admindb:pepsifan1234@mongo_db:27017/taskDB?authSource=admin" # 👈 Update URI with credentials
+
+volumes:
+  mongo_data: # 👈 Define the named volume for persistence
