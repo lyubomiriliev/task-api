@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { taskService } from "../services/TaskService";
 import Task from "./Task";
+import "../../styles/todolist.scss";
+import { Link } from "react-router-dom";
 
 const TodoList = () => {
   const [tasks, setTasks] = useState([]);
@@ -13,13 +15,19 @@ const TodoList = () => {
   }, [tasks]);
 
   return (
-    <div>
-      <h2>My to-do list</h2>
-      <div>
+    <div className="list-container">
+      <div className="list-title">
+        <h2 className="list-heading">My tasks</h2>
+        <Link className="new-task" to="/add">
+          <button>Create new task</button>
+        </Link>
+      </div>
+      <div className="tasks-list">
         {tasks.map((task) => (
           <Task key={task._id} task={task} />
         ))}
       </div>
+      <button>Finish all tasks</button>
     </div>
   );
 };

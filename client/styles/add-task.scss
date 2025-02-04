@@ -1,0 +1,16 @@
+.form-container {
+  width: 600px;
+  height: 600px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    gap: 10px;
+  }
+}

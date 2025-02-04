@@ -1,12 +1,13 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import TodoList from "./components/TodoList";
 import AddTask from "./components/AddTask";
+import "../styles/app.scss";
 
 function App() {
   return (
     <Router>
-      <div>
-        <h1>To-Do App</h1>
+      <div className="container">
+        <h1 className="to-do-heading">To-Do App</h1>
         <Routes>
           <Route path="/" element={<TodoList />} />
           <Route path="/add" element={<AddTask />} />
