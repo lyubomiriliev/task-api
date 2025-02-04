@@ -21,11 +21,9 @@ export const getTaskById = async (req, res) => {
 
 export const createTask = async (req, res) => {
   try {
-    const task = await Task.create(req.body); // Ensure create() is used
-    console.log("📌 Task saved:", task);
+    const task = await Task.create(req.body);
     res.status(201).json(task);
   } catch (err) {
-    console.error("❌ Error saving task:", err);
     res.status(500).json({ message: "Error creating task", error: err });
   }
 };
