@@ -1,0 +1,35 @@
+.list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .list-title {
+    width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .new-task {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  .list-heading {
+    color: hsl(66%, 10%, 20%);
+  }
+
+  .tasks-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 800px;
+    min-height: 300px;
+    background-color: white;
+    padding: 6px;
+    place-items: center;
+    border-radius: 5px;
+  }
+}
