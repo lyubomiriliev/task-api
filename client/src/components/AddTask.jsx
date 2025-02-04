@@ -25,21 +25,27 @@ const AddTask = ({ onTaskAdded }) => {
       <form className="form" onSubmit={handleSubmit}>
         <label>Task Name</label>
         <input
+          className="task-name"
           type="text"
-          placeholder="New Task"
           value={taskName}
           onChange={(e) => setTaskName(e.target.value)}
         />
         <label>Select Priority</label>
-        <select onChange={(e) => setPrio(e.target.value)} name="priority">
+        <select
+          className="task-priority"
+          onChange={(e) => setPrio(e.target.value)}
+          name="priority"
+        >
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
           <option value="High">High</option>
         </select>
-        <button type="submit">Add Task</button>
+        <button className="add-btn" type="submit">
+          Add Task
+        </button>
       </form>
       <Link to="/">
-        <button>Back to tasks</button>
+        <button className="back-btn">Back to tasks</button>
       </Link>
     </div>
   );

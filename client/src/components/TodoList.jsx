@@ -19,7 +19,7 @@ const TodoList = () => {
       <div className="list-title">
         <h2 className="list-heading">My tasks</h2>
         <Link className="new-task" to="/add">
-          <button>Create new task</button>
+          <button className="task-btn">Create new task</button>
         </Link>
       </div>
       <div className="tasks-list">
@@ -27,7 +27,6 @@ const TodoList = () => {
           <Task key={task._id} task={task} />
         ))}
       </div>
-      <button>Finish all tasks</button>
     </div>
   );
 };

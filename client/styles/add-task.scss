@@ -12,5 +12,47 @@
     justify-content: center;
     width: 60%;
     gap: 10px;
+
+    .task-name {
+      border: none;
+      padding: 6px 6px 10px 10px;
+      border-radius: 4px;
+    }
+
+    .task-priority {
+      border: none;
+      padding: 6px 6px 10px 10px;
+      border-radius: 4px;
+    }
+
+    .add-btn {
+      border: none;
+      font-size: 0.9rem;
+      padding: 12px 40px;
+      background-color: hsl(120, 63%, 37%);
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .add-btn:hover {
+      background-color: hsl(120, 67%, 27%);
+    }
+  }
+
+  .back-btn {
+    border: none;
+    padding: 10px 20px;
+    background-color: hsl(44, 90%, 49%);
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    align-self: center;
+  }
+
+  .back-btn:hover {
+    background-color: hsl(39, 93%, 44%);
   }
 }
