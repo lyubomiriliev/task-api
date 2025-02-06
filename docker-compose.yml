@@ -1,7 +1,32 @@
 version: "3.8"
 
 services:
-  mongo_db:
+  frontend:
+    build:
+      context: ./client
+    container_name: task-app-frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: .
+    container_name: task-app-backend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+    environment:
+      MONGO_URI: "mongodb://admindb:pepsifan1234@mongo_db:27017/taskDB?authSource=admin"
+    networks:
+      - app-network
+
+  database:
     image: mongo:latest
     container_name: mongo_db
     restart: always
@@ -12,17 +37,11 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admindb
       MONGO_INITDB_ROOT_PASSWORD: pepsifan1234
-
-  task_api:
-    build: .
-    container_name: task_api
-    restart: always
-    ports:
-      - "3000:3000"
-    depends_on:
-      - mongo_db
-    environment:
-      MONGO_URI: "mongodb://admindb:pepsifan1234@mongo_db:27017/taskDB?authSource=admin" # 👈 Update URI with credentials
+    networks:
+      - app-network
 
 volumes:
-  mongo_data: # 👈 Define the named volume for persistence
+  mongo_data: #  Defining the named volume for persistence
+
+networks:
+  app-network: # Shared network for container communication

@@ -1,11 +1,11 @@
 # Use Node.js base image
-FROM node:18
+FROM node:22-alpine3.20
 
 # Set working directory inside the container
 WORKDIR /app
 
 # Copy package files and install dependencies
-COPY package.json package-lock.json ./
+COPY package*.json ./
 RUN npm install
 
 # Copy the entire project into the container
