@@ -6,10 +6,10 @@ import {
   getTasks,
   updateTask,
 } from "../controllers/task.controller.js";
-export const router = express.Router();
+export const taskRouter = express.Router();
 
-router.get("/", getTasks);
-router.get("/:id", getTaskById);
-router.post("/", createTask);
-router.put("/:id", updateTask);
-router.delete("/:id", deleteTask);
+taskRouter.get("/", getTasks);
+taskRouter.get("/:id", getTaskById);
+taskRouter.post("/", createTask);
+taskRouter.put("/:id", updateTask);
+taskRouter.delete("/:id", deleteTask);
