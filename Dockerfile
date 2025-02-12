@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy package files and install dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm install -g nodemon
 
 # Copy the entire project into the container
 COPY . .
@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 3000
 
 # Start the server
-CMD ["node", "index.js"]
+CMD ["npm", "run", "dev"]

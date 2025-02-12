@@ -15,7 +15,6 @@ app.use(express.urlencoded({ extended: false }));
 // routes
 app.use("/api/tasks", taskRouter);
 app.use("/api/users", userRouter);
-console.log("User routes registered");
 
 app.get("/test", (req, res) => {
   res.send("API is working!");
