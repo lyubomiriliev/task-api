@@ -2,14 +2,18 @@ import express from "express";
 import {
   createTask,
   deleteTask,
+  getAllTasks,
+  getMyTasks,
   getTaskById,
-  getTasks,
   updateTask,
 } from "../controllers/task.controller.js";
+import { protect } from "../middleware/authMiddleware.js";
+
 export const taskRouter = express.Router();
 
-taskRouter.get("/", getTasks);
+taskRouter.get("/", getAllTasks);
+taskRouter.get("/private", protect, getMyTasks);
 taskRouter.get("/:id", getTaskById);
-taskRouter.post("/", createTask);
-taskRouter.put("/:id", updateTask);
-taskRouter.delete("/:id", deleteTask);
+taskRouter.post("/", protect, createTask);
+taskRouter.put("/:id", protect, updateTask);
+taskRouter.delete("/:id", protect, deleteTask);

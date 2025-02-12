@@ -61,8 +61,14 @@ const loginUser = async (req, res) => {
   }
 };
 
-const getMe = (req, res) => {
-  res.stats(201).json({ message: "User data display" });
+const getMe = async (req, res) => {
+  const { _id, name, email } = await User.findById(req.user.id);
+
+  res.status(200).json({
+    id: _id,
+    name,
+    email,
+  });
 };
 
 // Generate JWT
